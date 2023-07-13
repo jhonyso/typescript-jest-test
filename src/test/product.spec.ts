@@ -8,7 +8,9 @@ describe('Product', () => {
   afterEach(() => jest.clearAllMocks());
 
   it('should have properties name and price', () => {
+    //act
     const sut = createSut('Camiseta', 49.9);
+    //assert
     expect(sut).toHaveProperty('name', 'Camiseta');
     expect(sut.price).toBeCloseTo(49.9);
   });

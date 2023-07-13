@@ -64,43 +64,58 @@ const createSut = () => {
 
 describe('Order', () => {
   it('should not checkout if cart is empty', () => {
+    //arrange
     const { sut, shoppingCartMock } = createSut();
+    //act
     const shoppingCartMockSpy = jest
       .spyOn(shoppingCartMock, 'isEmpty')
       .mockReturnValueOnce(true);
     sut.checkout();
+    //assert
     expect(shoppingCartMockSpy).toHaveBeenCalledTimes(1);
     expect(sut.orderStatus).toBe('open');
   });
 
   it('should checkout if cart is not empty', () => {
+    //arrange
     const { sut, shoppingCartMock } = createSut();
+    //act
     const shoppingCartMockSpy = jest
       .spyOn(shoppingCartMock, 'isEmpty')
       .mockReturnValueOnce(false);
     sut.checkout();
+    //assert
     expect(shoppingCartMockSpy).toHaveBeenCalledTimes(1);
     expect(sut.orderStatus).toBe('closed');
   });
 
   it('should send an email to customer', () => {
+    //arrange
     const { sut, messagingMock } = createSut();
+    //act
     const messagingMockSpy = jest.spyOn(messagingMock, 'sendMessage');
     sut.checkout();
+    //assert
     expect(messagingMockSpy).toHaveBeenCalledTimes(1);
   });
 
   it('should save order', () => {
+    //arrange
     const { sut, persistencyMock } = createSut();
+    //act
     const persistencyMockSpy = jest.spyOn(persistencyMock, 'saveOrder');
     sut.checkout();
+    //assert
     expect(persistencyMockSpy).toHaveBeenCalledTimes(1);
   });
 
   it('should clear cart', () => {
+    //arrange
     const { sut, shoppingCartMock } = createSut();
+    //act
     const shoppingCartMockSpy = jest.spyOn(shoppingCartMock, 'clear');
     sut.checkout();
+    //assert
     expect(shoppingCartMockSpy).toHaveBeenCalledTimes(1);
   });
 });
