@@ -20,8 +20,8 @@ jobs:
 
       - name: Rodar os testes unitarios
         run: |
-          npm run test:silent
+          npm run test:silent @commitlint/{cli,config-conventional}
 
       - name: Coletar os coverage do teste
         run: |
-          npm run test:coverage
+          npm run test:coverage @commitlint/{cli,config-conventional}
