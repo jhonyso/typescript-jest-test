@@ -13,11 +13,15 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 20.
+
       - name: Install Packages
-        run: npm install
+        run: |
+          npm install --save-dev @commitlint/{cli,config-conventional}
 
       - name: Rodar os testes unitarios
-        run: npm run test:silent
+        run: |
+          npm run test:silent
 
       - name: Coletar os coverage do teste
-        run: npm run test:coverage
+        run: |
+          npm run test:coverage
