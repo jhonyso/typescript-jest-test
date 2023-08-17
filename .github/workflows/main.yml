@@ -18,10 +18,14 @@ jobs:
         run: |
           npm install --save-dev @commitlint/{cli,config-conventional}
 
+      - name: Install jest
+        run: |
+          npm install --save-dev jest
+
       - name: Rodar os testes unitarios
         run: |
-          npm run test:silent @commitlint/{cli,config-conventional}
+          npm run test:silent
 
       - name: Coletar os coverage do teste
         run: |
-          npm run test:coverage @commitlint/{cli,config-conventional}
+          npm run test:coverage
