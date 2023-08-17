@@ -16,7 +16,7 @@ const persistency = new Persistency();
 //   'Luiz',
 //   'Miranda',
 //   '111.111.111-11',
-// );
+// )
 const enterpriseCustomer = new EnterpriseCustomer(
   'Empresa Gigante',
   '2222222222222222',
