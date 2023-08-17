@@ -24,7 +24,7 @@ jobs:
 
       - name: Rodar os testes unitarios
         run: |
-          npm run test:silent
+          npm run test
 
       - name: Coletar os coverage do teste
         run: |
