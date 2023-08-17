@@ -33,9 +33,9 @@ const createSutWithProducts = () => {
 describe('ShoppingCart', () => {
   it('should be an empty cart when no product is added', () => {
     //act
-    const { list } = createSut();
+    const { sut } = createSut();
     //assert
-    expect(list.isEmpty()).toBe(true);
+    expect(sut.isEmpty()).toBe(true);
   });
 
   it('should have 2 cart items', () => {
