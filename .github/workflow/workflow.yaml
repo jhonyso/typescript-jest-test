@@ -4,6 +4,7 @@ on: pull_request
 
 jobs:
   continuos-integration:
+    name: deploy
     runs-on: ubuntu-latest
 
     steps:
