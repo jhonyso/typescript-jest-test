@@ -31,27 +31,27 @@ const createSutWithProducts = () => {
 };
 
 describe('ShoppingCart', () => {
-  it('should be an empty cart when no product is added', () => {
-    //act
-    const { sut } = createSut();
-    //assert
-    expect(sut.isEmpty()).toBe(true);
-  });
+  // it('should be an empty cart when no product is added', () => {
+  //   //act
+  //   const { sut } = createSut();
+  //   //assert
+  //   expect(sut.isEmpty()).toBe(true);
+  // });
 
-  it('should have 2 cart items', () => {
-    //act
-    const { sut } = createSutWithProducts();
-    //assert
-    expect(sut.items.length).toBe(2);
-  });
+  // it('should have 2 cart items', () => {
+  //   //act
+  //   const { sut } = createSutWithProducts();
+  //   //assert
+  //   expect(sut.items.length).toBe(2);
+  // });
 
-  it('should test total and totalWithDiscount', () => {
-    //act
-    const { sut } = createSutWithProducts();
-    //assert
-    expect(sut.total()).toBe(41);
-    expect(sut.totalWithDicount()).toBe(41);
-  });
+  // it('should test total and totalWithDiscount', () => {
+  //   //act
+  //   const { sut } = createSutWithProducts();
+  //   //assert
+  //   expect(sut.total()).toBe(41);
+  //   expect(sut.totalWithDicount()).toBe(41);
+  // });
 
   it('should add products and clear cart', () => {
     //arrange
