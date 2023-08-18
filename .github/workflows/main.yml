@@ -1,6 +1,9 @@
 name: Continuos Integration
 
-on: pull_request
+on:
+   pull_request_target:
+        branches:
+            - main
 
 jobs:
   continuos-integration:
@@ -13,19 +16,20 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.
+      - uses: ArtiomTr/jest-coverage-report-action@v2
+      # - name: Install Packages
+      #   run: |
+      #     npm install --save-dev @commitlint/{cli,config-conventional}
 
-      - name: Install Packages
-        run: |
-          npm install --save-dev @commitlint/{cli,config-conventional}
+      # - name: Install jest
+      #   run: |
+      #     npm install --save-dev jest
 
-      - name: Install jest
-        run: |
-          npm install --save-dev jest
+      # - name: Rodar os testes unitarios
+      #   run: |
+      #     npm run test
 
-      - name: Rodar os testes unitarios
-        run: |
-          npm run test
+      # - name: Coletar os coverage do teste
+      #   run: |
+      #     # npm run test:coverage
 
-      - name: Coletar os coverage do teste
-        run: |
-          npm run test:coverage
