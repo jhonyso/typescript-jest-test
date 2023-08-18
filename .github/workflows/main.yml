@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: 16.
       - uses: ArtiomTr/jest-coverage-report-action@v2
-      # - name: Install Packages
+      # - name: Install Package
       #   run: |
       #     npm install --save-dev @commitlint/{cli,config-conventional}
 
