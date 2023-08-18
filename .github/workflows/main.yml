@@ -18,25 +18,6 @@ jobs:
         with:
           node-version: 16.
 
-      - name: Install Packages
-        run: |
-          npm install --save-dev @commitlint/{cli,config-conventional}
-          npm install --save-dev jest
-
-      - name: Coletar os coverage do teste
-        run: |
-          npm run test:coverage
-
-      # - name: Rodar os testes unitarios
-      #   run: |
-      #     npm run test:silent
-      # - uses: ArtiomTr/jest-coverage-report-action@v2
-      #     id: coverage
-      #     with:
-      #       test-script: npm run test:silent
-      #       output: report-markdown
-      #       github-token: ${{ secrets.GITHUB_TOKEN}}
-
-      - uses: marocchino/sticky-pull-request-comment@v2
+      - uses: ArtiomTr/jest-coverage-report-action@v2
         with:
-            message: teste de mensagem
+          test-script: npm run test:coverage
