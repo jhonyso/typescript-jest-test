@@ -20,8 +20,8 @@ jobs:
 
       - uses: ArtiomTr/jest-coverage-report-action@v2
         with:
-          test-script: npm run test:silent
-          output: report-markdown
+          test-script: npm run test:coverage
+          # output: report-markdown
             # github-token: ${{ secrets.GITHUB_TOKEN}}
 
       # - name: Install Packages
