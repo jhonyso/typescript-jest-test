@@ -18,7 +18,6 @@ jobs:
         with:
           node-version: 16.
       - uses: ArtiomTr/jest-coverage-report-action@v2
-          id: coverage
           with:
             test-script: npm run test:silent
             output: report-markdown
