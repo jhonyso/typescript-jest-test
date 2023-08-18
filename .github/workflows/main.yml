@@ -17,6 +17,13 @@ jobs:
         with:
           node-version: 16.
       - uses: ArtiomTr/jest-coverage-report-action@v2
+          id: coverage
+          with:
+            test-script: npm run test:silent
+            output: report-markdown
+      - uses: marocchino/sticky-pull-request-comment@v2
+          with:
+            message: ${{ steps.coverage.outputs.report }}
       # - name: Install Package
       #   run: |
       #     npm install --save-dev @commitlint/{cli,config-conventional}
