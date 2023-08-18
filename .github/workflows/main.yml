@@ -1,6 +1,9 @@
 name: Continuos Integration
 
-on: pull_request
+on:
+   pull_request_target:
+        branches:
+            - main
 
 jobs:
   continuos-integration:
