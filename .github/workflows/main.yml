@@ -29,3 +29,4 @@ jobs:
       - name: Coletar os coverage do teste
         run: |
           npm run test:coverage
+          ls
