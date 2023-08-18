@@ -7,6 +7,10 @@ on:
 
 jobs:
   continuos-integration:
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: write
     name: Coverage
     runs-on: ubuntu-latest
 
@@ -21,7 +25,7 @@ jobs:
           with:
             test-script: npm run test:silent
             output: report-markdown
-            github-token: ${{ secrets.GITHUB_TOKEN}}
+            # github-token: ${{ secrets.GITHUB_TOKEN}}
       - uses: marocchino/sticky-pull-request-comment@v2
           with:
             message: ${{ steps.coverage.outputs.report }}
