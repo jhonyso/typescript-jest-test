@@ -1,9 +1,6 @@
 name: Continuos Integration
 
-on:
-   pull_request_target:
-        branches:
-            - main
+on: pull_request
 
 jobs:
   continuos-integration:
@@ -11,7 +8,7 @@ jobs:
       checks: write
       pull-requests: write
       contents: write
-    name: Coverage
+    name: Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -20,28 +17,29 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.
-      - name: Install Package
-        run: |
-          npm install --save-dev @commitlint/{cli,config-conventional}
-          npm install --save-dev jest
+
+      - uses: ArtiomTr/jest-coverage-report-action@v2
+          id: coverage
+          with:
+            test-script: npm run test:silent
+            output: report-markdown
+            # github-token: ${{ secrets.GITHUB_TOKEN}}
+
+      - uses: marocchino/sticky-pull-request-comment@v2
+          with:
+            message: ${{ steps.coverage.outputs.report }}
+      # - name: Install Packages
+      #   run: |
+      #     npm install --save-dev @commitlint/{cli,config-conventional}
+
+      # - name: Install jest
+      #   run: |
+      #     npm install --save-dev jest
 
       # - name: Rodar os testes unitarios
       #   run: |
-      #     npm run test
+      #     npm run test:silent
 
-      - name: Coletar os coverage do teste
-        run: |
-          npm run test:coverage
-      - uses: marocchino/sticky-pull-request-comment@v2
-          with:
-            path: ./coverage/coverage-final.json
-      # - uses: ArtiomTr/jest-coverage-report-action@v2
-      #     id: coverage
-      #     with:
-      #       test-script: npm run test:silent
-      #       output: report-markdown
-            # github-token: ${{ secrets.GITHUB_TOKEN}}
-      # - uses: marocchino/sticky-pull-request-comment@v2
-      #     with:
-      #       message: ${{ steps.coverage.outputs.report }}
-
+      # - name: Coletar os coverage do teste
+      #   run: |
+      #     npm run test:coverage
