@@ -4,7 +4,4 @@ export class Persistency implements PersistencyProtocol {
   saveOrder(): void {
     console.log('Pedido salvo com sucesso...');
   }
-  getOrde(): void {
-    console.log('Pedido salvo com sucesso...');
-  }
 }
