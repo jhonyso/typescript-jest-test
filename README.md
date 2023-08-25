@@ -55,4 +55,3 @@ Mais antes certifique que sua pasta .vscode esteja configurado desta maneira (np
 Basta abrir a pasta e em "typescript":
 
 coloque desta forma "npx ts-node --files --transpile-only"
-
