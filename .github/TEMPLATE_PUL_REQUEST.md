@@ -66,12 +66,12 @@ descrever cenário
 ( Checks com um (*) devem ser obrigatoriamente cumpridos para o PR ser mesclado)
 
 <!-- begin_checklist -->
-  Fornecça pelo menos 2 informações do checklist
-<!-- end_checklist -->
-
 - [ ] O PR já foi testado/validado e está pronto para ir pra mão do cliente
 - [ ]  Flag adicionado previamente
 - [ ] O PR está sob feature/local flag e não tem side effect caso a flag esteja desligada
 - [ ] O PR contém apenas _deadcode_
 - [ ] A descrição do PR fornece informações detalhadas sobre as mudanças realizadas.
 - [ ] Foram adicionados testes unitários adequados para cobrir as mudanças realizadas.
+<!-- end_checklist -->
+
+
