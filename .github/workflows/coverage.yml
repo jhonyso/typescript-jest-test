@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        src: [ test, test-services ]
+        test: [test-classes, test-services]
 
     steps:
       - uses: actions/checkout@v3
