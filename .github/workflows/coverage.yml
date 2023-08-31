@@ -14,8 +14,8 @@ jobs:
       matrix:
         src: services
 
-    # outputs:
-    #   services: ${{ steps.report.outputs.services }}
+    outputs:
+      services: ${{ steps.coverage.outputs.report }}
 
     steps:
       - uses: actions/checkout@v3
