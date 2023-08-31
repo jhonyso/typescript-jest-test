@@ -10,22 +10,22 @@ jobs:
       contents: write
     name: Deploy
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        src: [ services ]
+    # strategy:
+    #   matrix:
+    #     src: [ services ]
 
-    outputs:
-      services: ${{ steps.coverage.outputs.services }}
+    # outputs:
+    #   services: ${{ steps.coverage.outputs.services }}
 
     steps:
       - uses: actions/checkout@v3
       - uses: ArtiomTr/jest-coverage-report-action@v2.2.4
-        id: coverage
+        # id: coverage
         with:
           test-script: npm run test:coverage
-          output: report-markdown
+          # output: report-markdown
 
-      - uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          message: ${{ steps.coverage.outputs.report }}
+      # - uses: marocchino/sticky-pull-request-comment@v2
+      #   with:
+      #     message: ${{ steps.coverage.outputs.report }}
 
