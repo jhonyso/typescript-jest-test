@@ -63,7 +63,6 @@ descrever cenário
 descrever cenário
 
 ## ✅ Cumpre pelo menos 2 dos requisitos abaixo?
-( Checks com um (*) devem ser obrigatoriamente cumpridos para o PR ser mesclado)
 
 <!-- begin_checklist -->
 - [ ] O PR já foi testado/validado e está pronto para ir pra mão do cliente
