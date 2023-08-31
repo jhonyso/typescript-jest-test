@@ -26,7 +26,7 @@ jobs:
         run: npm install
 
       - name: Test with coverage
-        run: npm run test $TEST_PATH -- --maxWorkers=4 --config jest.coverage.config.js --collectCoverageFrom=$COVERAGE_GLOB --outputFile=report.json
+        run: npm run test $TEST_PATH -- --maxWorkers=4 --ci --json --coverage --collectCoverageFrom=$COVERAGE_GLOB --outputFile=report.json
         continue-on-error: true
         env:
           CURRENT_DOMAIN: ${{ matrix.src }}
@@ -36,3 +36,4 @@ jobs:
       #   with:
       #     working-directory: services
       #     test-script: npm run test:coverage
+
