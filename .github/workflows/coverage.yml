@@ -1,6 +1,9 @@
 name: Continuos Integration
 
-on: pull_request_target
+on:
+    pull_request_target:
+      branch:
+        - main
 
 jobs:
   continuos-integration:
@@ -17,6 +20,6 @@ jobs:
         with:
           test-script: npm run test:coverage
           working-directory: services
-          coverage-file: ./coverage/report.json
-          base-coverage-file: ./coverage/main/report.json
+          coverage-file: ./coverage/coverage-final.json
+          base-coverage-file: ./coverage/main/coverage-final.json
 
