@@ -1,9 +1,11 @@
 name: Continuos Integration
 
 on:
-    pull_request_target:
-      branch:
-        - main
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   continuos-integration:
@@ -26,12 +28,12 @@ jobs:
         run: npm install
 
       - name: Test with coverage
-        run: npm run test $TEST_PATH -- --maxWorkers=4 --ci --json --coverage --collectCoverageFrom=$COVERAGE_GLOB --outputFile=report.json
+        run: npm run test $TEST_PATH -- --maxWorkers=4 --ci --json --coverage --testLocationInResults --outputFile=report.json
         continue-on-error: true
         env:
-          CURRENT_DOMAIN: ${{ matrix.src }}
           TEST_PATH: ${{ matrix.src == 'src\/(?!test)' || 'src/test/$CURRENT_DOMAIN' }}
-          COVERAGE_GLOB: ${{ matrix.src == 'src/!(test)/**/*.ts(x)?' || 'src/test/$CURRENT_DOMAIN/**/*.ts(x)?' }}
+        #   CURRENT_DOMAIN: ${{ matrix.src }}
+          # COVERAGE_GLOB: ${{ matrix.src == 'src/!(test)/**/*.ts(x)?' || 'src/test/$CURRENT_DOMAIN/**/*.ts(x)?' }}
       # - uses: ArtiomTr/jest-coverage-report-action@v2.2.4
       #   with:
       #     working-directory: services
