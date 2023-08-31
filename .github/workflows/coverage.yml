@@ -22,4 +22,3 @@ jobs:
           working-directory: services
           coverage-file: ./coverage/coverage-final.json
           base-coverage-file: ./coverage/main/coverage-final.json
-
