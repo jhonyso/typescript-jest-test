@@ -11,12 +11,28 @@ jobs:
       checks: write
       pull-requests: write
       contents: write
-    name: Deploy
+
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        src: [classes, services]
 
     steps:
       - uses: actions/checkout@v3
-      - uses: ArtiomTr/jest-coverage-report-action@v2.2.4
         with:
-          working-directory: services
-          test-script: npm run test:coverage
+          fetch-depth: 0
+
+      - name: Instalando as dependencias
+        run: npm install
+
+      - name: Test with coverage
+        run: npm run test $TEST_PATH -- --maxWorkers=4 --config jest.coverage.config.js --collectCoverageFrom=$COVERAGE_GLOB --outputFile=report.json
+        continue-on-error: true
+        env:
+          CURRENT_DOMAIN: ${{ matrix.src }}
+          TEST_PATH: ${{ matrix.src == 'src\/(?!services)' || 'src/services/$CURRENT_DOMAIN' }}
+          COVERAGE_GLOB: ${{ matrix.src == 'src/!(services)/**/*.ts(x)?' || 'src/services/$CURRENT_DOMAIN/**/*.ts(x)?' }}
+      # - uses: ArtiomTr/jest-coverage-report-action@v2.2.4
+      #   with:
+      #     working-directory: services
+      #     test-script: npm run test:coverage
