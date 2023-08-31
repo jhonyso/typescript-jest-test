@@ -1,10 +1,10 @@
-import { ShoppingCart } from './classes/shopping-cart';
-import { Order } from './classes/order';
-import { Messaging } from './services/messaging';
-import { Persistency } from './services/persistency';
-import { Product } from './classes/product';
-import { NoDiscount } from './classes/discount';
-import { EnterpriseCustomer } from './classes/customer';
+import { ShoppingCart } from './domains/classes/shopping-cart';
+import { Order } from './domains/classes/order';
+import { Messaging } from './domains/services/messaging';
+import { Persistency } from './domains/services/persistency';
+import { Product } from './domains/classes/product';
+import { NoDiscount } from './domains/classes/discount';
+import { EnterpriseCustomer } from './domains/classes/customer';
 
 // const fiftyPercentDiscount = new FiftyPercentDiscount();
 // const tenPercentDiscount = new TenPercentDiscount();
