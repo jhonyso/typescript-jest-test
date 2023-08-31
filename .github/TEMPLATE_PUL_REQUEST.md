@@ -58,8 +58,6 @@ descrever cenário
 
 > ### Favor salvar a mudança para não perder o cenário da conta de teste!
 
-
-
 descrever cenário
 
 ## ✅ Cumpre pelo menos 2 dos requisitos abaixo?
