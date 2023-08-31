@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        src: [classes, services]
+        src: [ test, test-services ]
 
     steps:
       - uses: actions/checkout@v3
@@ -30,10 +30,9 @@ jobs:
         continue-on-error: true
         env:
           CURRENT_DOMAIN: ${{ matrix.src }}
-          TEST_PATH: ${{ matrix.src == 'src\/(?!services)' || 'src/services/$CURRENT_DOMAIN' }}
-          COVERAGE_GLOB: ${{ matrix.src == 'src/!(services)/**/*.ts(x)?' || 'src/services/$CURRENT_DOMAIN/**/*.ts(x)?' }}
+          TEST_PATH: ${{ matrix.src == 'src\/(?!test)' || 'src/test/$CURRENT_DOMAIN' }}
+          COVERAGE_GLOB: ${{ matrix.src == 'src/!(test)/**/*.ts(x)?' || 'src/test/$CURRENT_DOMAIN/**/*.ts(x)?' }}
       # - uses: ArtiomTr/jest-coverage-report-action@v2.2.4
       #   with:
       #     working-directory: services
       #     test-script: npm run test:coverage
-

@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Order } from '../classes/order';
-import { ShoppingCartProtocol } from '../classes/interfaces/shopping-cart-protocol';
-import { CartItem } from '../classes/interfaces/cart-item';
-import { MessagingProtocol } from '../classes/interfaces/messaging-protocol';
-import { PersistencyProtocol } from '../classes/interfaces/persistency-protocol';
-import { CustomerOrder } from '../classes/interfaces/customer-protocol';
+import { Order } from '../../classes/order';
+import { ShoppingCartProtocol } from '../../classes/interfaces/shopping-cart-protocol';
+import { CartItem } from '../../classes/interfaces/cart-item';
+import { MessagingProtocol } from '../../classes/interfaces/messaging-protocol';
+import { PersistencyProtocol } from '../../classes/interfaces/persistency-protocol';
+import { CustomerOrder } from '../../classes/interfaces/customer-protocol';
 
 class ShoppingCartMock implements ShoppingCartProtocol {
   get items(): Readonly<CartItem[]> {

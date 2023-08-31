@@ -1,4 +1,4 @@
-import { Product } from '../classes/product';
+import { Product } from '../../classes/product';
 
 const createSut = (name: string, price: number): Product => {
   return new Product(name, price);
