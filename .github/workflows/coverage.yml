@@ -16,8 +16,12 @@ jobs:
 
     runs-on: ubuntu-latest
     strategy:
-      matrix: [classes, services]
-        # src: [classes, services, test]
+      matrix:
+        domain: [classes, services]
+
+    outputs:
+      classes: ${{ steps.outputs.classes }}
+      services: ${{ steps.outputs.servives }}
 
     steps:
       - uses: actions/checkout@v3
@@ -28,12 +32,12 @@ jobs:
         run: npm install
 
       - name: Test with coverage
-        run: npm run test $TEST_PATH -- --maxWorkers=4 --ci --json --coverage --testLocationInResults --outputFile=report.json
+        run: npm run test $TEST_PATH -- --config --ci --json --collectCoverageFrom=$COVERAGE_TEST --coverage --testLocationInResults --outputFile=report.json
         continue-on-error: true
         env:
-          TEST_PATH: ${{ matrix.src == 'src\/(?!test)' || 'src/test/$CURRENT_DOMAIN' }}
-        #   CURRENT_DOMAIN: ${{ matrix.src }}
-          # COVERAGE_GLOB: ${{ matrix.src == 'src/!(test)/**/*.ts(x)?' || 'src/test/$CURRENT_DOMAIN/**/*.ts(x)?' }}
+          CURRENT_DOMAIN: ${{ matrix.domain }}
+          TEST_PATH: ${{ matrix.domain == 'src\/(?!domain)' || 'src/domain/$CURRENT_DOMAIN' }}
+          COVERAGE_TEST: ${{ matrix.domain == 'src/!(domain)/**/*.ts(x)?' || 'src/domain/$CURRENT_DOMAIN/**/*.ts(x)?' }}
       # - uses: ArtiomTr/jest-coverage-report-action@v2.2.4
       #   with:
       #     working-directory: services
