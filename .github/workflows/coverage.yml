@@ -14,8 +14,8 @@ jobs:
       matrix:
         src: [ services ]
 
-    # outputs:
-    #   services: ${{ steps.coverage.outputs.report }}
+    outputs:
+      services: ${{ steps.message.report }}
 
     steps:
       - uses: actions/checkout@v3
@@ -27,4 +27,4 @@ jobs:
 
       - uses: marocchino/sticky-pull-request-comment@v2
         with:
-          services: ${{ steps.coverage.outputs.report }}
+          message: ${{ steps.coverage.outputs.report }}
