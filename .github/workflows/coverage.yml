@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        src: services
+        src: [ services ]
 
-    outputs:
-      services: ${{ steps.coverage.outputs.report }}
+    # outputs:
+    #   services: ${{ steps.coverage.outputs.report }}
 
     steps:
       - uses: actions/checkout@v3
