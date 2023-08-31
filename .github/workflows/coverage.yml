@@ -15,7 +15,7 @@ jobs:
         src: [ services ]
 
     outputs:
-      services: ${{ steps.message.report }}
+      services: ${{ steps.coverage.outputs.services }}
 
     steps:
       - uses: actions/checkout@v3
