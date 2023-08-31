@@ -65,9 +65,9 @@ descrever cenário
 ## ✅ Cumpre pelo menos 2 dos requisitos abaixo?
 ( Checks com um (*) devem ser obrigatoriamente cumpridos para o PR ser mesclado)
 
-<!-- begin_checklist →
+<!-- begin_checklist -->
   Fornecça pelo menos 2 informações do checklist
-<!-- end_checklist →
+<!-- end_checklist -->
 
 - [ ] O PR já foi testado/validado e está pronto para ir pra mão do cliente
 - [ ]  Flag adicionado previamente
