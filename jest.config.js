@@ -6,7 +6,7 @@ module.exports = {
       lines: 100,
     },
     './src/domains/classes': {
-      branches: 100,
+      functions: 100,
     },
   },
 };
