@@ -1,4 +1,4 @@
-name: Continuos Integration
+name: Test and Coverage
 
 on:
   push:
@@ -7,50 +7,31 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-jobs:
-  continuos-integration:
-    permissions:
-      checks: write
-      pull-requests: write
-      contents: write
+permissions:
+  id-token: write
+  contents: read
+  issues: write
+  pull-requests: write
 
+jobs:
+  test-and-report:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm install
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
 
-      - name: Test and coverage
-        run: npm run test --ci --json --coverage --testLocationInResults --outputFile=report.json
+    - name: Install dependencies
+      run: npm install
 
-    # strategy:
-    #   matrix:
-    #     domain: [classes, services]
+    - name: Run tests and coverage
+      run: npx jest --config --coverage --ci
 
-    # outputs:
-    #   classes: ${{ steps.outputs.classes }}
-    #   services: ${{ steps.outputs.servives }}
-
-    # steps:
-    #   - uses: actions/checkout@v3
-    #     with:
-    #       fetch-depth: 0
-
-    #   - name: Instalando as dependencias
-    #     run: npm install
-
-    #   - name: Test with coverage
-    #     run: npm run test $TEST_PATH -- --config --ci --json --collectCoverageFrom=$COVERAGE_TEST --coverage --testLocationInResults --outputFile=report.json
-    #     continue-on-error: true
-    #     env:
-    #       CURRENT_DOMAIN: ${{ matrix.domain }}
-    #       TEST_PATH: ${{ matrix.domain == 'src\/(?!domain)' || 'src/domain/$CURRENT_DOMAIN' }}
-    #       COVERAGE_TEST: ${{ matrix.domain == 'src/!(domain)/**/*.ts(x)?' || 'src/domain/$CURRENT_DOMAIN/**/*.ts(x)?' }}
-      # - uses: ArtiomTr/jest-coverage-report-action@v2.2.4
-      #   with:
-      #     working-directory: services
-      #     test-script: npm run test:coverage
+    - name: Coverage report
+      uses: romeovs/lcov-reporter-action@v0.2.16
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        lcov-file: ./coverage/lcov.info
