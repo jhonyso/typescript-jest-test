@@ -5,5 +5,8 @@ module.exports = {
     global: {
       lines: 100,
     },
+    './src/domains/classes': {
+      branches: 100,
+    },
   },
 };
