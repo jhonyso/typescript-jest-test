@@ -37,4 +37,17 @@ export class ShoppingCart implements ShoppingCartProtocol {
     console.log('Carrinho de compras foi limpo...');
     this._items.length = 0;
   }
+
+  totalWithDicounT(): number {
+    return this.discount.calculate(this.total());
+  }
+
+  isEmptY(): boolean {
+    return this._items.length === 0;
+  }
+
+  cleaR(): void {
+    console.log('Carrinho de compras foi limpo...');
+    this._items.length = 0;
+  }
 }
